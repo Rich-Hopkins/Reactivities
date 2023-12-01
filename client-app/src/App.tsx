@@ -12,12 +12,13 @@ function App() {
       .then(response => {
         setActivities(response.data)
       })
-  }, []);
+  },
+    []);
 
   return (
     <div>
       <Header as='h2' icon='users' content='Reactivities'></Header>
-      <List>
+      <List animated bulleted>
         {activities
           .sort((a, b) => a.date > b.date? 1 : -1)
           .map((activity: any) => (
