@@ -24,6 +24,7 @@ namespace Application.Activities
 
             public async Task Handle(Command request, CancellationToken cancellationToken)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 var activity = await _context.Activities.FindAsync(request.Activity.Id);
 
                 _mapper.Map(request.Activity, activity);

@@ -2,6 +2,7 @@ using Application.Activities;
 using Application.Core;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using MediatR;
 
 namespace API.Extensions
 {
@@ -26,6 +27,11 @@ namespace API.Extensions
             });
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(List.Handler).Assembly));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new() { Title = "API", Version = "v1" });
+            });
 
             return services;
         }
