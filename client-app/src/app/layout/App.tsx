@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import './styles.css';
 import axios from 'axios';
 import { Header, List } from 'semantic-ui-react';
+import { Activity } from '../models/activity';
 
 function App() {
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/activities')
+    axios.get<Activity[]>('http://localhost:5000/api/activities')
       .then(response => {
         setActivities(response.data)
       })
@@ -20,8 +20,8 @@ function App() {
       <List animated bulleted>
         {activities
           .sort((a, b) => a.date > b.date ? 1 : -1)
-          .map((activity: any) => (
-            <List.Item key={activity.id}>{activity.title}</List.Item>
+          .map((activity) => (
+            <List.Item key={activity.id}>{activity.date}: {activity.title}</List.Item>
           ))}
       </List>
     </div>
