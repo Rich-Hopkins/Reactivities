@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react';
+import './styles.css';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
 import { Header, List } from 'semantic-ui-react';
 
 function App() {
@@ -20,10 +19,10 @@ function App() {
       <Header as='h2' icon='users' content='Reactivities'></Header>
       <List animated bulleted>
         {activities
-          .sort((a, b) => a.date > b.date? 1 : -1)
+          .sort((a, b) => a.date > b.date ? 1 : -1)
           .map((activity: any) => (
-          <List.Item key={activity.id}>{activity.title}</List.Item>
-        ))}
+            <List.Item key={activity.id}>{activity.title}</List.Item>
+          ))}
       </List>
     </div>
   )
