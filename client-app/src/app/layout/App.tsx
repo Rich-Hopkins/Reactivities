@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
-import { List } from 'semantic-ui-react';
+import { Container, List } from 'semantic-ui-react';
 import { Activity } from '../models/activity';
 import NavBar from './NavBar';
 
@@ -16,16 +16,18 @@ function App() {
     []);
 
   return (
-    <div>
+    <Fragment>
       <NavBar />
-      <List animated bulleted>
-        {activities
-          .sort((a, b) => a.date > b.date ? 1 : -1)
-          .map((activity) => (
-            <List.Item key={activity.id}>{activity.date}: {activity.title}</List.Item>
-          ))}
-      </List>
-    </div>
+      <Container style={{ marginTop: '5em' }}>
+        <List animated>
+          {activities
+            .sort((a, b) => a.date > b.date ? 1 : -1)
+            .map((activity) => (
+              <List.Item key={activity.id}>{activity.date}: {activity.title}</List.Item>
+            ))}
+        </List>
+      </Container>
+    </Fragment>
   )
 }
 
