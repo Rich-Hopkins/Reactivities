@@ -469,6 +469,6 @@ psd
 thumb
 sketch
 
-API/reactivities.db-shm
-
-API/reactivities.db-wal
+*.db-shm
+*.db-wal
+=======

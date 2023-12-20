@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+API/reactivities.db-wal
+API/reactivities.db-shm
