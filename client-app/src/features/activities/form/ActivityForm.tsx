@@ -5,9 +5,10 @@ import { Activity } from "../../../app/models/activity";
 interface Props {
     closeForm: () => void;
     activity: Activity | undefined;
+    createOrEdit: (activity: Activity) => void;
 }
 
-export default function ActivityForm({ closeForm, activity: selectedActivity }: Props) {
+export default function ActivityForm({ closeForm, activity: selectedActivity, createOrEdit }: Props) {
 
     const initialState: Activity = selectedActivity ?? {
         id: '',
@@ -30,6 +31,10 @@ export default function ActivityForm({ closeForm, activity: selectedActivity }: 
         setActivity({ ...activity, [name]: value });
     }
 
+    function handleFormSubmit() {
+        createOrEdit(activity);
+    }
+
     return (
         <Segment clearing>
             <Form onSubmit={handleSubmit} autoComplete="off">
@@ -39,7 +44,7 @@ export default function ActivityForm({ closeForm, activity: selectedActivity }: 
                 <Form.Input placeholder='Date' value={activity.date} name="date" onChange={handleInputChange} />
                 <Form.Input placeholder='City' value={activity.city} name="city" onChange={handleInputChange} />
                 <Form.Input placeholder='Venue' value={activity.venue} name="venue" onChange={handleInputChange} />
-                <Button floated='right' positive type='submit' content='Submit' />
+                <Button onClick={handleFormSubmit} floated='right' positive type='submit' content='Submit' />
                 <Button onClick={closeForm} floated='right' type='button' content='Cancel' />
             </Form>
         </Segment>
