@@ -6,6 +6,7 @@ interface Props {
 }
 
 export default function NavBar({ openForm }: Props) {
+
     return (
         <Menu inverted fixed='top'>
             <Container>

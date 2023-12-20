@@ -47,6 +47,7 @@ export default function ActivityDashboard({
                     activity={selectedActivity}
                     createOrEdit={createOrEdit}
                     />}
+
             </Grid.Column>
         </Grid>
     );

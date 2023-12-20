@@ -63,6 +63,7 @@ function App() {
           createOrEdit={handleCreateOrEditActivity}
           deleteActivity={handleDeleteActivity}
         />
+
       </Container>
     </Fragment>
   )
