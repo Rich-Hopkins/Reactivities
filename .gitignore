@@ -468,3 +468,7 @@ bower_components
 psd
 thumb
 sketch
+
+API/reactivities.db-wal
+
+API/reactivities.db-shm
