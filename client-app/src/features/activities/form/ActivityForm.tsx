@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
+import { useParams } from "react-router-dom";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 
 export default observer(function ActivityForm() {
     const { activityStore } = useStore();
-    const { selectedActivity, createActivity, updateActivity, loading } = activityStore;
+    const {
+        selectedActivity,
+        createActivity,
+        updateActivity,
+        loading,
+        loadActivity,
+        loadingInitial } = activityStore;
 
-    const initialState: Activity = selectedActivity ?? {
+    const { id } = useParams();
+    const [activity, setActivity] = useState({
         id: '',
         title: '',
         category: '',
@@ -17,9 +26,11 @@ export default observer(function ActivityForm() {
         date: '',
         city: '',
         venue: ''
-    };
+    });
 
-    const [activity, setActivity] = React.useState(initialState);
+    useEffect(() => {
+        if (id) loadActivity(id).then(activity => setActivity(activity!));
+    }, [id, loadActivity]);
 
     function handleSubmit() {
         console.log(activity);
@@ -33,6 +44,8 @@ export default observer(function ActivityForm() {
     function handleFormSubmit() {
         activity.id ? updateActivity(activity) : createActivity(activity);
     }
+
+    if (loadingInitial) return <LoadingComponent content="Loading activity..." />;
 
     return (
         <Segment clearing>
