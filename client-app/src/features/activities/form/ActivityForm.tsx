@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
@@ -10,7 +9,6 @@ import LoadingComponent from "../../../app/layout/LoadingComponent";
 export default observer(function ActivityForm() {
     const { activityStore } = useStore();
     const {
-        selectedActivity,
         createActivity,
         updateActivity,
         loading,
