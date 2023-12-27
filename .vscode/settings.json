@@ -31,5 +31,6 @@
         "titleBar.inactiveForeground": "#15202b99"
     },
     "peacock.color": "#61dafb",
-    "workbench.editor.tabActionCloseVisibility": false
+    "workbench.editor.tabActionCloseVisibility": false,
+    "omnisharp.autoStart": true
 }

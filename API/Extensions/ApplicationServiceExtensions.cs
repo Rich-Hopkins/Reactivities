@@ -3,6 +3,8 @@ using Application.Core;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using MediatR;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace API.Extensions
 {
@@ -27,6 +29,8 @@ namespace API.Extensions
             });
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(List.Handler).Assembly));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<Create>();
 
             services.AddSwaggerGen(c =>
             {
