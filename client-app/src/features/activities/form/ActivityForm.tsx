@@ -4,11 +4,12 @@ import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
-import { v4 as uuid } from 'uuid';
 import { Form, Formik } from "formik";
 import * as Yup from 'yup';
 import MyTextInput from "../../../app/common/form/MyTextInput";
 import MyTextArea from "../../../app/common/form/MyTextArea";
+import MySelectInput from "../../../app/common/form/MySelectInput";
+import { categoryOptions } from "../../../app/common/options/CategoryOptions";
 
 
 export default observer(function ActivityForm() {
@@ -73,7 +74,7 @@ export default observer(function ActivityForm() {
                     <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
                         <MyTextInput name="title" placeholder="Title" />
                         <MyTextArea name="description" placeholder='Description' rows={3} />
-                        <MyTextInput name="category" placeholder='Category' />
+                        <MySelectInput options={categoryOptions} name="category" placeholder='Category' />
                         <MyTextInput name="date" placeholder='Date' type="date" />
                         <MyTextInput name="city" placeholder='City' />
                         <MyTextInput name="venue" placeholder='Venue' />
