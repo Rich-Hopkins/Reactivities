@@ -11,12 +11,20 @@ namespace Persistence
             var activities = new List<Activity>
             {
                 new() {
-                    Title = "Christmas Train Rid",
-                    Date = new DateTime(2023, 12, 31),
+                    Title = "Christmas Train Ride",
+                    Date = new DateTime(2023, 12, 31, 19, 0, 0),
                     Description = "Taking a train ride in Chattanooga where you will ride through a six-mile, u-shaped tunnel, and see the Christmas lights.",
                     Category = "railway",
                     City = "Chattanooga",
                     Venue = "Tennessee Valley Railroad Museum",
+                },
+                new() {
+                    Title = "Rich & Suzi Anniversary",
+                    Date = new DateTime(2023, 12, 31),
+                    Description = "On this date fourteen years ago, Rich and Suzi were joined, and the two became one, and they have been together ever since. Happy Anniversary!",
+                    Category = "culture",
+                    City = "Oakwood, GA",
+                    Venue = "First Pentecostal Church of Oakwood",
                 },
                 new() {
                     Title = "Sun n Fun",
