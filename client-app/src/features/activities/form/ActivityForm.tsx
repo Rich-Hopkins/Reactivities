@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { Button, FormField, Label, Segment } from "semantic-ui-react";
+import { Button, FormMyTextInput, Label, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { v4 as uuid } from 'uuid';
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from 'yup';
+import MyTextInput from "../../../app/common/form/MyTextInput";
 
 
 export default observer(function ActivityForm() {
@@ -34,10 +35,10 @@ export default observer(function ActivityForm() {
     const validationSchema = Yup.object({
         title: Yup.string().required('The activity title is required'),
         description: Yup.string().required('The activity description is required'),
-        category: Yup.string().required(),
+        category: Yup.string().required('The activity category is required'),
         date: Yup.string().required('Date is required').nullable(),
-        venue: Yup.string().required(),
-        city: Yup.string().required()
+        city: Yup.string().required('The activity city is required'),
+        venue: Yup.string().required('The activity venue is required')
     });
 
     useEffect(() => {
@@ -69,17 +70,12 @@ export default observer(function ActivityForm() {
                 onSubmit={values => console.log(values)}>
                 {({ handleSubmit }) => (
                     <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
-                        <FormField>
-                            <Field placeholder='Title' name="title" />
-                            <ErrorMessage
-                                name='title'
-                                render={error => <Label basic color='red' content={error} />} />
-                        </FormField>
-                        <Field placeholder='Description' name="description" />
-                        <Field placeholder='Category' name="category" />
-                        <Field type="date" placeholder='Date' name="date" />
-                        <Field placeholder='City' name="city" />
-                        <Field placeholder='Venue' name="venue" />
+                        <MyTextInput name="title" placeholder="Title" />
+                        <MyTextInput name="description" placeholder='Description' />
+                        <MyTextInput name="category" placeholder='Category' />
+                        <MyTextInput name="date" placeholder='Date' type="date" />
+                        <MyTextInput name="city" placeholder='City' />
+                        <MyTextInput name="venue" placeholder='Venue' />
                         <Button
                             loading={loading}
                             floated='right'
