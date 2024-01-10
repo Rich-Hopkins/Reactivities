@@ -472,3 +472,5 @@ sketch
 *.db-shm
 *.db-wal
 =======
+
+.vscode/

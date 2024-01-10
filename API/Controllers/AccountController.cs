@@ -10,6 +10,7 @@ namespace API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
+
         public AccountController(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
