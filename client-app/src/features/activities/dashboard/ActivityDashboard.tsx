@@ -15,7 +15,7 @@ export default observer(function ActivityDashboard() {
         if (activityRegistry.size <= 1) loadActivities();
     }, [loadActivities, activityRegistry.size]);
 
-    if (loadingInitial) return <LoadingComponent content='Fetching list...' />
+    if (loadingInitial) return <LoadingComponent content='Loading activities...' />
 
     return (
         <Grid>
