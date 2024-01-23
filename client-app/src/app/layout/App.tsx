@@ -7,6 +7,7 @@ import { useStore } from "../stores/store";
 import LoadingComponent from "./loadingComponent";
 import HomePage from "../../features/home/HomePage";
 import NavBar from "./NavBar";
+import ModalContainer from "../common/modals/modalContainer";
 
 function App() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <Fragment>
+      <ModalContainer />
       <ToastContainer position="bottom-right" theme="colored" />
       {location.pathname === "/" ? (
         <HomePage />
