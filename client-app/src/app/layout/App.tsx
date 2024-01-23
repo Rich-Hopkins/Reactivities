@@ -1,11 +1,12 @@
 import { Fragment, useEffect } from "react";
 import { Container } from "semantic-ui-react";
-import NavBar from "./NavBar";
 import { observer } from "mobx-react-lite";
 import { Outlet, useLocation } from "react-router-dom";
-import HomePage from "../../features/home/HomePage";
 import { ToastContainer } from "react-toastify";
 import { useStore } from "../stores/store";
+import LoadingComponent from "./loadingComponent";
+import HomePage from "../../features/home/HomePage";
+import NavBar from "./NavBar";
 
 function App() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function App() {
     }
   }, [commonStore, userStore]);
 
-  if (!commonStore.appLoaded) return (<h1>Loading...</h1>)
+  if (!commonStore.appLoaded) return (<LoadingComponent content='Loading app...'></LoadingComponent>)
 
   return (
     <Fragment>
