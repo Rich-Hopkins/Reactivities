@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Container, Header, Segment, Image, Button } from 'semantic-ui-react';
 import { useStore } from '../../app/stores/store';
+import { observer } from 'mobx-react-lite';
 
-export default function HomePage() {
+export default observer (function HomePage() {
 const {userStore} = useStore();
 
     return (
@@ -31,4 +32,4 @@ const {userStore} = useStore();
             </Container>
         </Segment>
     )
-}
+})
